@@ -3,12 +3,14 @@ from routes.sesion import ws_sesion
 from routes.agricultor import ws_agricultor
 from routes.actividad import ws_actividad
 from routes.actividad_tipo import ws_actividad_tipo
+from routes.parcela import ws_parcela
 
 app = Flask(__name__)
 app.register_blueprint(ws_sesion)
 app.register_blueprint(ws_agricultor)
 app.register_blueprint(ws_actividad)
 app.register_blueprint(ws_actividad_tipo)
+app.register_blueprint(ws_parcela)
 
 @app.route('/')
 def home():
