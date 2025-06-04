@@ -6,11 +6,11 @@ ws_cultivo = Blueprint('ws_cultivo', __name__)
 
 modelo = Cultivo()
 
-@ws_cultivo.route('/cultivo/listar', methods=['GET'])
+@ws_cultivo.route('/cultivo/listar/<id>', methods=['GET'])
 @jwt_token_requerido
-def listar():
+def listar(id):
     try:
-        resultado = modelo.listar()
+        resultado = modelo.listar(id)
         if resultado:
             return jsonify({'status': True, 'data': resultado, 'message': 'Lista de cultivos'}), 200
         else:
