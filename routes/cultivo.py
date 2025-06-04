@@ -13,10 +13,7 @@ modelo = Cultivo()
 def listar(id):
     try:
         resultado = modelo.listar(id)
-        data = json.dumps({'data': resultado}, cls = CustomJSONEncoder)
-        if resultado:
-            return jsonify({'status': True, 'data': json.loads(data), 'message': 'Lista de cultivos'}), 200
-        else:
-            return jsonify({'status': False, 'data': None, 'message': 'No se encontraron cultivos'}), 404
+        data = json.dumps(resultado, cls = CustomJSONEncoder)
+        return jsonify({'status': True, 'data': json.loads(data), 'message': 'Lista de cultivos'}), 200
     except Exception as e:
         return jsonify({'status': False, 'data': None, 'message': str(e)}), 500
